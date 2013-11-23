@@ -1,0 +1,3 @@
+<config xmlns="urn:fabric3.org">
+    <runtime port.range="1191-1290" mode="vm"/>
+</config>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>fabric3-guice-samples</artifactId>
+        <groupId>org.codehaus.fabric3.samples.guice</groupId>
+        <version>2.5.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>webapp</artifactId>
+    <packaging>war</packaging>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>${jax.rs.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.jetty.orbit</groupId>
+            <artifactId>javax.servlet</artifactId>
+            <version>3.0.0.v201112011016</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.fabric3</groupId>
+            <artifactId>fabric3-binding-zeromq-api</artifactId>
+            <version>${fabric3.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.fabric3</groupId>
+                <artifactId>fabric3-packager-plugin</artifactId>
+                <version>${fabric3.version}</version>
+                <executions>
+                    <execution>
+                        <id>fabric3-packager</id>
+                        <goals>
+                            <goal>fabric3-packager</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <runtimeVersion>${fabric3.version}</runtimeVersion>
+                    <profiles>
+                        <profile>
+                            <groupId>org.codehaus.fabric3</groupId>
+                            <artifactId>profile-zeromq</artifactId>
+                            <version>${fabric3.version}</version>
+                        </profile>
+                        <profile>
+                            <groupId>org.codehaus.fabric3</groupId>
+                            <artifactId>profile-rs</artifactId>
+                            <version>${fabric3.version}</version>
+                        </profile>
+                    </profiles>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.0.0.v20130308</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
